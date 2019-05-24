@@ -23,10 +23,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":CommonSDK")
+    api project(":CommonRes")
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["constraint-layout"]
     testImplementation rootProject.ext.dependencies["junit"]
     implementation project(':ThirdLibrarys:slideanimation')
+    implementation project(':ThirdLibrarys:tvrecyclerview')
+    compile 'me.kaelaela:verticalviewpager:1.0.0@aar'
 }

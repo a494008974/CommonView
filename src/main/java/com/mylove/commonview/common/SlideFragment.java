@@ -1,6 +1,5 @@
-package com.mylove.commonview;
+package com.mylove.commonview.common;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,7 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.di.component.DaggerAppComponent;
+import com.mylove.commonview.R;
 import com.mylove.slideanimation.anim.Anim;
 import com.mylove.slideanimation.anim.AnimManager;
 import com.mylove.slideanimation.anim.EnterAnimLayout;
@@ -25,8 +24,6 @@ import com.mylove.slideanimation.anim.EnterAnimLayout;
 import org.simple.eventbus.Subscriber;
 
 import java.lang.reflect.Constructor;
-
-import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,17 +46,16 @@ public class SlideFragment extends BaseFragment {
 
 
     private String[] urls;
-    private String type;
+    private int type;
 
     private static final String URL = "URLS";
     private static final String TYPE = "TYPE";
-    private static SlideFragment slideFragment;
 
-    public static SlideFragment newInstance(String[] urls,String type){
-        slideFragment = new SlideFragment();
+    public static SlideFragment newInstance(String[] urls,int type){
         Bundle bundle = new Bundle();
         bundle.putStringArray(URL,urls);
-        bundle.putString(TYPE,type);
+        bundle.putInt(TYPE,type);
+        SlideFragment slideFragment = new SlideFragment();
         slideFragment.setArguments(bundle);
         return slideFragment;
     }
@@ -72,7 +68,7 @@ public class SlideFragment extends BaseFragment {
                     Class clazzIn = AnimManager.getAnimIn(animIndex);
                     Class clazzOut = AnimManager.getAnimOut(0);
 
-                    if(!"FadeInOut".equals(type)){
+                    if(type == 1){
                         animIndex++;
                     }
 
@@ -146,7 +142,7 @@ public class SlideFragment extends BaseFragment {
     public void initData(@Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         if(bundle != null){
-            type = bundle.getString(TYPE);
+            type = bundle.getInt(TYPE,0);
             urls = bundle.getStringArray(URL);
             preload();
         }
@@ -163,6 +159,7 @@ public class SlideFragment extends BaseFragment {
         if(mHandler != null){
             mHandler.removeMessages(ENTERANIM);
         }
+        urls=null;
     }
 
     @Subscriber(tag = "urls")

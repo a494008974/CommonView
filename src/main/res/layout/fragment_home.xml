@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".t_one.HomeFragment">
+
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_1"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/one_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_2"
+        style="@style/Content_View_Style"
+        app:layout_constraintEnd_toStartOf="@+id/one_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_1"
+        app:layout_constraintTop_toTopOf="@+id/one_1">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_3"
+        style="@style/Content_View_Style"
+        app:layout_constraintEnd_toStartOf="@+id/one_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_2"
+        app:layout_constraintTop_toTopOf="@+id/one_2">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_4"
+        style="@style/Content_View_Style"
+        app:layout_constraintEnd_toStartOf="@+id/one_5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_3"
+        app:layout_constraintTop_toTopOf="@+id/one_3">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_5"
+        style="@style/Content_View_Style"
+        app:layout_constraintEnd_toStartOf="@+id/one_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_4"
+        app:layout_constraintTop_toTopOf="@+id/one_4">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_6"
+        style="@style/Content_View_Style"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_5"
+        app:layout_constraintTop_toTopOf="@+id/one_5">
+
+    </com.mylove.commonview.widget.ContentView>
+
+
+</android.support.constraint.ConstraintLayout>

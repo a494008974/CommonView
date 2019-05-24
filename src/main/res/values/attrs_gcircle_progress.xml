@@ -1,0 +1,12 @@
+<resources>
+    <declare-styleable name="GCircleProgress">
+        <attr name="circle_progress_max" format="integer" />
+        <attr name="circle_progress_current" format="integer" />
+        <attr name="circle_textSize" format="dimension" />
+        <attr name="circle_progressColor" format="color" />
+        <attr name="circle_progressBackground" format="color" />
+        <attr name="circle_background" format="color" />
+        <attr name="circle_textColor" format="color" />
+        <attr name="circle_round_size" format="float" />
+    </declare-styleable>
+</resources>
