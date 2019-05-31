@@ -5,26 +5,51 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".t_one.HomeFragment">
+    tools:context=".fragment.HomeFragment">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/tv_launcher_home_header"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <FrameLayout
+        android:id="@+id/con_bg"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/public_white_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 
     <com.mylove.commonview.widget.ContentView
         android:id="@+id/one_1"
         style="@style/Content_View_Style"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:nextFocusLeft="@+id/one_6"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/con_bg"
         app:layout_constraintEnd_toStartOf="@+id/one_2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/one_7"
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
     </com.mylove.commonview.widget.ContentView>
 
     <com.mylove.commonview.widget.ContentView
         android:id="@+id/one_2"
         style="@style/Content_View_Style"
-        app:layout_constraintEnd_toStartOf="@+id/one_3"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/one_1"
         app:layout_constraintStart_toEndOf="@+id/one_1"
         app:layout_constraintTop_toTopOf="@+id/one_1">
 
@@ -33,18 +58,24 @@
     <com.mylove.commonview.widget.ContentView
         android:id="@+id/one_3"
         style="@style/Content_View_Style"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/one_2"
         app:layout_constraintEnd_toStartOf="@+id/one_4"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/one_2"
-        app:layout_constraintTop_toTopOf="@+id/one_2">
+        app:layout_constraintTop_toTopOf="@+id/one_2"
+        app:layout_constraintVertical_bias="0.0">
 
     </com.mylove.commonview.widget.ContentView>
 
     <com.mylove.commonview.widget.ContentView
         android:id="@+id/one_4"
         style="@style/Content_View_Style"
-        app:layout_constraintEnd_toStartOf="@+id/one_5"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="8dp"
+        android:nextFocusRight="@id/one_1"
+        app:layout_constraintEnd_toEndOf="@+id/one_11"
         app:layout_constraintStart_toEndOf="@+id/one_3"
         app:layout_constraintTop_toTopOf="@+id/one_3">
 
@@ -53,23 +84,95 @@
     <com.mylove.commonview.widget.ContentView
         android:id="@+id/one_5"
         style="@style/Content_View_Style"
-        app:layout_constraintEnd_toStartOf="@+id/one_6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/one_4"
-        app:layout_constraintTop_toTopOf="@+id/one_4">
+        app:layout_constraintBottom_toTopOf="@+id/one_6"
+        app:layout_constraintStart_toStartOf="@+id/one_4"
+        app:layout_constraintTop_toBottomOf="@+id/one_4">
 
     </com.mylove.commonview.widget.ContentView>
 
     <com.mylove.commonview.widget.ContentView
-        android:id="@+id/one_6"
+        android:id="@id/one_6"
         style="@style/Content_View_Style"
-        android:layout_marginEnd="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/one_5"
-        app:layout_constraintTop_toTopOf="@+id/one_5">
+        android:nextFocusRight="@id/one_1"
+        app:layout_constraintBottom_toBottomOf="@+id/one_3"
+        app:layout_constraintStart_toStartOf="@+id/one_5">
 
     </com.mylove.commonview.widget.ContentView>
 
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_7"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="8dp"
+        android:nextFocusLeft="@+id/one_11"
+        app:layout_constraintBottom_toBottomOf="@+id/con_bg"
+        app:layout_constraintEnd_toStartOf="@+id/one_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/con_bg"
+        app:layout_constraintStart_toStartOf="@+id/con_bg"
+        app:layout_constraintTop_toTopOf="@+id/con_bg">
 
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_8"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/one_9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_7"
+        app:layout_constraintTop_toTopOf="@+id/one_7">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_9"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/one_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_8"
+        app:layout_constraintTop_toTopOf="@+id/one_8">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@+id/one_10"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/one_11"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_9"
+        app:layout_constraintTop_toTopOf="@+id/one_9">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <com.mylove.commonview.widget.ContentView
+        android:id="@id/one_11"
+        style="@style/Content_View_Style"
+        android:layout_marginStart="8dp"
+        android:nextFocusRight="@id/one_7"
+        app:layout_constraintEnd_toEndOf="@+id/con_bg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/one_10"
+        app:layout_constraintTop_toTopOf="@+id/one_10">
+
+    </com.mylove.commonview.widget.ContentView>
+
+    <TextView
+        android:id="@+id/tv_focus"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:textSize="@dimen/public_font_18sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/con_bg" />
+
+    <ImageView
+        android:id="@+id/iv_home_down"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/iv_home_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

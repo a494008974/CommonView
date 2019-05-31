@@ -1,7 +1,8 @@
-package com.mylove.commonview.t_one;
+package com.mylove.commonview.fragment;
 
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.mylove.commonview.common.MoreFragment;
 
 import org.simple.eventbus.Subscriber;
 
+import me.jessyan.armscomponent.commonres.utils.SystemUtils;
 import me.kaelaela.verticalviewpager.VerticalViewPager;
 
 /**
@@ -65,6 +67,22 @@ public class MainFragment extends CommonFragment{
                 commonFragment = (CommonFragment)fragment;
                 if(commonFragment.previousView != null){
                     commonFragment.previousView.requestFocus();
+                }
+            }
+        }
+    }
+    @Subscriber(tag = "turnHome")
+    public void turnHome(String event){
+        System.out.println("turnHome()..........");
+        if (viewPager == null) return;
+        int index = viewPager.getCurrentItem();
+        if(index == 1){
+            viewPager.setCurrentItem(index-1);
+            Fragment fragment = contentFragmentAdapter.getItem(index-1);
+            if(fragment instanceof CommonFragment){
+                CommonFragment commonFragment = (CommonFragment)fragment;
+                if(commonFragment.nextView != null){
+                    commonFragment.nextView.requestFocus();
                 }
             }
         }

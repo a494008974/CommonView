@@ -7,8 +7,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.mylove.commonview.R;
+
+import me.jessyan.armscomponent.commonres.utils.Contanst;
+import me.jessyan.armscomponent.commonres.utils.SystemUtils;
+import me.jessyan.armscomponent.commonservice.dao.DaoHelper;
+import me.jessyan.armscomponent.commonservice.dao.InfoBean;
 
 
 /**
@@ -35,31 +41,36 @@ public class ContentView extends FrameLayout {
         tvContent = (TextView) view.findViewById(R.id.content_tv);
     }
 
+    public String getTitle(){
+        if(tvContent != null){
+            return tvContent.getText().toString();
+        }
+        return "";
+    }
+
     public void initView(){
+        String tag = String.valueOf(this.getTag());
+        InfoBean infoBean = DaoHelper.fetchInfoBean(tag);
 
+        if(String.valueOf(Contanst.KEY_LIVE).equals(tag)){
+            SystemUtils.setProp("bsw.live.package", infoBean.getPkg());
+        }else if(String.valueOf(Contanst.KEY_VOD).equals(tag)){
+            SystemUtils.setProp("bsw.vod.package", infoBean.getPkg());
+        }
+
+        if(tvContent != null){
+            tvContent.setText(infoBean.getTitle());
+        }
+
+        if(imgContent != null){
+            Glide.with(mContext).load(String.format(Contanst.downmain,infoBean.getImg_url())).into(imgContent);
+        }
+
+        if("101".equals(tag) || "102".equals(tag) || "103".equals(tag)){
+            if(tvContent != null){
+                tvContent.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
-    public void updateView(ImageLoader mImageLoader){
-//        String tag = String.valueOf(this.getTag());
-//        InfoBean infoBean = DaoHelper.fetchInfoBean(tag);
-//        if(infoBean == null){ return;}
-//
-//        if(String.valueOf(Contanst.KEY_LIVE).equals(tag)){
-//            SystemUtils.setProp("bsw.live.package", infoBean.getPkg());
-//        }else if(String.valueOf(Contanst.KEY_VOD).equals(tag)){
-//            SystemUtils.setProp("bsw.vod.package", infoBean.getPkg());
-//        }
-//
-//        if(imgContent != null){
-//            mImageLoader.loadImage(mContext,
-//                    CommonImageConfigImpl
-//                            .builder()
-//                            .setDecodeFormate(DecodeFormat.PREFER_ARGB_8888)
-//                            .url(String.format(Contanst.downmain,infoBean.getImg_url()))
-//                            .imageView(imgContent)
-//                            .build());
-//        }
-
-
-    }
 }

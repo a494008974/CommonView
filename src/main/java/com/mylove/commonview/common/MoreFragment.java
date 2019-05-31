@@ -18,6 +18,7 @@ import com.owen.tvrecyclerview.widget.SimpleOnItemListener;
 import com.owen.tvrecyclerview.widget.TvRecyclerView;
 
 import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.List;
 
@@ -25,6 +26,8 @@ import me.jessyan.armscomponent.commonres.adapter.CommonRecyclerViewAdapter;
 import me.jessyan.armscomponent.commonres.adapter.CommonRecyclerViewHolder;
 import me.jessyan.armscomponent.commonres.utils.AppUtils;
 import me.jessyan.armscomponent.commonres.utils.SystemUtils;
+
+import static me.jessyan.armscomponent.commonres.utils.Contanst.MSG_WHAT_RECEIVE_APP;
 
 
 public class MoreFragment extends CommonFragment {
@@ -93,7 +96,6 @@ public class MoreFragment extends CommonFragment {
                 mHandler.sendEmptyMessage(DATAS);
             };
         }.start();
-        register();
 
         super.initData(savedInstanceState);
     }
@@ -107,7 +109,7 @@ public class MoreFragment extends CommonFragment {
         tvRecyclerView.setOnItemListener(new SimpleOnItemListener() {
             @Override
             public void onItemSelected(TvRecyclerView parent, View itemView, int position) {
-                onMoveFocusBorder(itemView, 1.05f, 10);
+                onMoveFocusBorder(itemView, 1.0f, 5);
             }
 
             @Override
@@ -153,43 +155,27 @@ public class MoreFragment extends CommonFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregister();
-
     }
 
-    //=======================广播====================
-    public void register() {
-        mAppReceiver = new AppReceiver();
-        IntentFilter filterAPP = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
-        filterAPP.addDataScheme("package");
-        filterAPP.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        getActivity().registerReceiver(mAppReceiver, filterAPP);
-    }
+    @Subscriber
+    public void fetchReceiver(Message msg){
+        switch (msg.what){
+            case MSG_WHAT_RECEIVE_APP:
+                Bundle bundle = msg.getData();
 
-    public void unregister() {
-        if (mAppReceiver != null) {
-            getActivity().unregisterReceiver(mAppReceiver);
+                if ("android.intent.action.PACKAGE_ADDED".equals(bundle.getString("action"))) {
+
+                }else if("android.intent.action.PACKAGE_REMOVED".equals(bundle.getString("action"))){
+
+                }
+
+                if(packageInfos != null){
+                    packageInfos.clear();
+                }
+                packageInfos = SystemUtils.getAllApps(getActivity(),3,false);
+                mHandler.sendEmptyMessage(DATAS);
+                break;
         }
     }
-    private AppReceiver mAppReceiver;
-    public class AppReceiver extends BroadcastReceiver {
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // TODO Auto-generated method stub
-            String packageName = intent.getDataString();
-            packageName = packageName.split(":")[1];
-            if (intent.getAction().equals("android.intent.action.PACKAGE_ADDED")) {
-
-            }else if(intent.getAction().equals("android.intent.action.PACKAGE_REMOVED")){
-
-            }
-            if(packageInfos != null){
-                packageInfos.clear();
-            }
-
-            packageInfos = SystemUtils.getAllApps(getActivity(),3,false);
-            mHandler.sendEmptyMessage(DATAS);
-        }
-    }
 }

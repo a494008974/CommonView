@@ -24,6 +24,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(":CommonRes")
+    api project(":CommonService")
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["constraint-layout"]

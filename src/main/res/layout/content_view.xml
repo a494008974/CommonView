@@ -21,6 +21,7 @@
         android:id="@+id/content_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/tv_content"
         android:gravity="center"
         android:textSize="24sp"
         android:padding="5dp"
@@ -28,5 +29,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/content_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <me.jessyan.armscomponent.commonres.view.GCircleProgress
+        android:id="@+id/gcircle_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.mylove.commonview.t_one;
+package com.mylove.commonview.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

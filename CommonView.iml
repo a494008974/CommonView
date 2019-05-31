@@ -164,6 +164,7 @@
     <orderEntry type="library" name="Gradle: com.github.VictorAlbertos.Jolyglot:api:0.0.4@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.markomilos:paginate-0.5.1" level="project" />
+    <orderEntry type="module" module-name="CommonService" />
     <orderEntry type="module" module-name="CommonSDK" />
     <orderEntry type="module" module-name="slideanimation" />
     <orderEntry type="module" module-name="CommonRes" />
